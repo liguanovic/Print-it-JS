@@ -27,8 +27,14 @@ const dots = document.querySelector(".dots");
 let positionSlide = 0;
 let allDots;
 
+createDots();
+carousel();
 
-leftArrow.addEventListener("click", function () {
+leftArrow.addEventListener("click", slideLeft);
+rightArrow.addEventListener("click", slideRight);
+
+
+function slideLeft() {
 
 	console.log("La flèche de gauche a été cliquée !");
 	if (positionSlide == 0) {
@@ -37,12 +43,16 @@ leftArrow.addEventListener("click", function () {
 		positionSlide--;
 	}
 
-	carousel(positionSlide);
-	updateDots(positionSlide);
+	image.src = IMG_URL + slides[positionSlide].image;
+    tagLine.innerHTML = slides[positionSlide].tagLine;
 
-});
+	updateDots();
 
-rightArrow.addEventListener("click", function () {
+	
+
+};
+
+function slideRight() {
 
 	console.log("La flèche de droite a été cliquée !");
 	if (positionSlide == slides.length - 1) {
@@ -51,10 +61,12 @@ rightArrow.addEventListener("click", function () {
 		positionSlide++;
 	}
 
-	carousel(positionSlide);
-	updateDots(positionSlide);
+	image.src = IMG_URL + slides[positionSlide].image;
+    tagLine.innerHTML = slides[positionSlide].tagLine;
 
-});
+	updateDots();
+
+};
 
 function createDots() {
 	for (let i = 0; i < slides.length; i++) {
@@ -78,9 +90,9 @@ function updateDots() {
 
 function carousel() {
 
-	leftArrow.addEventListener("click", slideLeft);
-	rightArrow.addEventListener("click", slideRight);
-
+	let i;
+    leftArrow.addEventListener("click", slideLeft);
+    rightArrow.addEventListener("click", slideRight);
 
 	for (let i = 0; i < slides.length; i++) {
 		const addDot = document.createElement("span");
