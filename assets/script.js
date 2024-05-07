@@ -43,12 +43,9 @@ function slideLeft() {
 	}
 
 	image.src = IMG_URL + slides[positionSlide].image;
-    tagLine.innerHTML = slides[positionSlide].tagLine;
+	tagLine.innerHTML = slides[positionSlide].tagLine;
 
 	updateDots();
-
-	
-
 };
 
 function slideRight() {
@@ -61,10 +58,9 @@ function slideRight() {
 	}
 
 	image.src = IMG_URL + slides[positionSlide].image;
-    tagLine.innerHTML = slides[positionSlide].tagLine;
+	tagLine.innerHTML = slides[positionSlide].tagLine;
 
 	updateDots();
-
 };
 
 function updateDots() {
@@ -79,8 +75,8 @@ function updateDots() {
 function carousel() {
 
 	let i;
-    leftArrow.addEventListener("click", slideLeft);
-    rightArrow.addEventListener("click", slideRight);
+	leftArrow.addEventListener("click", slideLeft);
+	rightArrow.addEventListener("click", slideRight);
 
 	for (let i = 0; i < slides.length; i++) {
 		const addDot = document.createElement("span");
@@ -93,7 +89,9 @@ function carousel() {
 	}
 
 	allDots = document.querySelectorAll(".dot");
-
+	updateDots();
 }
+
+
 
 
