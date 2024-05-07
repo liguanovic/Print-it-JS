@@ -27,7 +27,6 @@ const dots = document.querySelector(".dots");
 let positionSlide = 0;
 let allDots;
 
-createDots();
 carousel();
 
 leftArrow.addEventListener("click", slideLeft);
@@ -67,17 +66,6 @@ function slideRight() {
 	updateDots();
 
 };
-
-function createDots() {
-	for (let i = 0; i < slides.length; i++) {
-		const dot = document.createElement("span");
-		dot.setAttribute("class", "dot");
-		if (i === 0) {
-			dot.classList.add("dot_selected");
-		}
-		dots.appendChild(dot);
-	}
-}
 
 function updateDots() {
 	for (let i = 0; i < allDots.length; i++) {
