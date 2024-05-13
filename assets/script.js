@@ -37,11 +37,20 @@ let allDots;
 
 // *************** FUNCTIONS *************** 
 
+/**
+ * Updates the content of the image and tagline based on the current positionSlide.
+ *
+ */
 function updateContent() {
   image.src = IMG_URL + slides[positionSlide].image;
   tagLine.innerHTML = slides[positionSlide].tagLine;
 }
 
+/**
+ * Updates the dots in the carousel to indicate the current slide.
+ *
+ * @return {void} This function does not return a value.
+ */
 function updateDots() {
   for (let i = 0; i < allDots.length; i++) {
     allDots[i].classList.remove("dot_selected");
@@ -50,6 +59,12 @@ function updateDots() {
   allDots[positionSlide].classList.add("dot_selected");
 }
 
+/**
+ * Decrements the positionSlide variable by 1 and wraps it around to the end of the slides array if it goes below 0.
+ * Calls the updateContent and updateDots functions to update the displayed content and dot indicators.
+ *
+ * @return {void} This function does not return a value.
+ */
 function slideLeft() {
   positionSlide = (positionSlide - 1 + LENGTH) % LENGTH;
 
@@ -57,12 +72,19 @@ function slideLeft() {
   updateDots();
 }
 
+/**
+ * Increments the positionSlide variable by 1 and wraps it around to 0 if it exceeds the length of the slides array.
+ * Calls the updateContent and updateDots functions to update the displayed content and dot indicators.
+ *
+ * @return {void} This function does not return a value.
+ */
 function slideRight() {
   positionSlide = (positionSlide + 1) % LENGTH;
 
   updateContent();
   updateDots();
 }
+
 
 function addListeners() {
   leftArrow.addEventListener("click", slideLeft);
